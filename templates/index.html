@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Career Development Portal</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Build your skills. Discover your career path.</p>
+    </header>
+
+
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="animated-background">
+
+        <span class="floating-circle circle-1"></span>
+        <span class="floating-circle circle-2"></span>
+        <span class="floating-circle circle-3"></span>
+        <span class="floating-circle circle-4"></span>
+        <span class="floating-circle circle-5"></span>
+
+        <span class="floating-icon icon-1">💻</span>
+        <span class="floating-icon icon-2">💡</span>
+        <span class="floating-icon icon-3">🚀</span>
+        <span class="floating-icon icon-4">📚</span>
+        <span class="floating-icon icon-5">🎯</span>
+
+    </div>
+
+
+    <main>
+
+        <!-- HERO SECTION -->
+
+        <section class="animated-home-container">
+
+            <div class="animated-hero">
+
+                <div class="hero-icon">
+                    🚀
+                </div>
+
+                <h2>Welcome to Your Career Journey</h2>
+
+                <p class="animated-home-description">
+                    Discover your strengths, improve your skills,
+                    explore suitable career paths and track your
+                    progress — all in one smart platform.
+                </p>
+
+                <div class="hero-tags">
+
+                    <span>Discover</span>
+                    <span>Learn</span>
+                    <span>Improve</span>
+                    <span>Grow</span>
+
+                </div>
+
+                <a href="{{ url_for('register') }}">
+
+                    <button type="button"
+                            class="animated-get-started-btn">
+
+                        Get Started →
+
+                    </button>
+
+                </a>
+
+            </div>
+
+
+            <!-- FEATURES -->
+
+            <div class="animated-home-features">
+
+                <div class="animated-feature-card">
+
+                    <div class="animated-feature-icon">
+                        💡
+                    </div>
+
+                    <h3>Manage Skills</h3>
+
+                    <p>
+                        Add and manage your technical and
+                        professional skills.
+                    </p>
+
+                </div>
+
+
+                <div class="animated-feature-card">
+
+                    <div class="animated-feature-icon">
+                        📝
+                    </div>
+
+                    <h3>Skill Assessment</h3>
+
+                    <p>
+                        Test your knowledge with personalized
+                        questions based on your career goal.
+                    </p>
+
+                </div>
+
+
+                <div class="animated-feature-card">
+
+                    <div class="animated-feature-icon">
+                        🎯
+                    </div>
+
+                    <h3>Career Guidance</h3>
+
+                    <p>
+                        Discover suitable career paths and identify
+                        skills you need to improve.
+                    </p>
+
+                </div>
+
+
+                <div class="animated-feature-card">
+
+                    <div class="animated-feature-icon">
+                        📈
+                    </div>
+
+                    <h3>Track Progress</h3>
+
+                    <p>
+                        Monitor your skill development, assessment
+                        results and career readiness.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM SECTION -->
+
+            <div class="animated-home-footer">
+
+                <h3>Start Building Your Future Today ✨</h3>
+
+                <p>
+                    Create your profile and begin your personalized
+                    career development journey.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

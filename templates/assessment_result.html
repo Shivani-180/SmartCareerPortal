@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assessment Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Assessment Result</p>
+    </header>
+
+    <main>
+
+        <section class="result-container">
+
+            <div class="result-header">
+
+                <h2>🎉 Assessment Completed!</h2>
+
+                <p>
+                    Your personalized assessment has been completed.
+                </p>
+
+            </div>
+
+            <hr>
+
+            <div class="score-card">
+
+                <p class="score-label">
+                    Your Score
+                </p>
+
+                <div class="score">
+                    {{ score }} / {{ total_questions }}
+                </div>
+
+                <p>
+                    You answered
+                    <strong>{{ score }}</strong>
+                    out of
+                    <strong>{{ total_questions }}</strong>
+                    questions correctly.
+                </p>
+
+                {% if total_questions > 0 %}
+
+                    <p class="percentage">
+                        Score:
+                        <strong>
+                            {{ ((score / total_questions) * 100) | round | int }}%
+                        </strong>
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="result-message">
+
+                {% if total_questions > 0 and
+                      (score / total_questions) >= 0.75 %}
+
+                    <h3>🟢 Excellent Performance!</h3>
+
+                    <p>
+                        You have demonstrated a strong understanding
+                        of the assessed skills.
+                    </p>
+
+                {% elif total_questions > 0 and
+                        (score / total_questions) >= 0.50 %}
+
+                    <h3>🟡 Good Progress!</h3>
+
+                    <p>
+                        You have a good foundation, but some areas
+                        may need further practice.
+                    </p>
+
+                {% else %}
+
+                    <h3>🔴 Keep Improving!</h3>
+
+                    <p>
+                        Review the assessed topics and continue
+                        practicing to improve your skills.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="result-actions">
+
+                <a href="{{ url_for('skill_gap') }}">
+                    <button type="button">
+                        View Skill-Gap Analysis
+                    </button>
+                </a>
+
+                <a href="{{ url_for('assessment') }}">
+                    <button type="button">
+                        Take Assessment Again
+                    </button>
+                </a>
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Gap Analysis</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Skill Gap Analysis</p>
+    </header>
+
+    <main>
+
+        <section class="skill-gap-container">
+
+            <div class="skill-gap-header">
+
+                <h2>📊 Skill Gap Analysis</h2>
+
+                <p>
+                    Compare your current skills with the requirements
+                    of your selected career.
+                </p>
+
+                <div class="career-badge">
+                    <strong>Career Goal:</strong>
+                    {{ student.career_goal }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            {% if analysis %}
+
+                <h3>Required Skills Analysis</h3>
+
+                <div class="table-wrapper">
+
+                    <table class="skill-gap-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Skill</th>
+                                <th>Your Level</th>
+                                <th>Required Level</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for item in analysis %}
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            {{ item.skill_name }}
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        {{ item.current_level }}
+                                    </td>
+
+                                    <td>
+                                        {{ item.required_level }}
+                                    </td>
+
+                                    <td>
+
+                                        {% if item.status == "Available" %}
+
+                                            <span class="status available">
+                                                ✅ Available
+                                            </span>
+
+                                        {% elif item.status == "Needs Improvement" %}
+
+                                            <span class="status improvement">
+                                                ⚠️ Needs Improvement
+                                            </span>
+
+                                        {% else %}
+
+                                            <span class="status missing">
+                                                ❌ Missing
+                                            </span>
+
+                                        {% endif %}
+
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="skill-gap-note">
+
+                    <p>
+                        <strong>Available:</strong>
+                        Your skill meets the required level.
+                    </p>
+
+                    <p>
+                        <strong>Needs Improvement:</strong>
+                        Your skill level is below the required level.
+                    </p>
+
+                    <p>
+                        <strong>Missing:</strong>
+                        This skill has not been added to your profile.
+                    </p>
+
+                </div>
+
+            {% else %}
+
+                <div class="no-analysis">
+
+                    <h3>No Career Requirements Found</h3>
+
+                    <p>
+                        No skill requirements are currently available
+                        for your selected career goal.
+                    </p>
+
+                    <p>
+                        Please select a supported career from your profile.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+            <div class="skill-gap-actions">
+
+                <a href="{{ url_for('career_recommendation') }}">
+                    <button type="button">
+                        Career Recommendations
+                    </button>
+                </a>
+
+                <a href="{{ url_for('learning_recommendation') }}">
+                    <button type="button">
+                        Learning Recommendations
+                    </button>
+                </a>
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

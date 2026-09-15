@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Skills</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>My Skills</p>
+    </header>
+
+    <main>
+
+        <section class="skills-container">
+
+            <h2>Manage My Skills</h2>
+
+            <p class="page-description">
+                Add and manage your technical and professional skills.
+            </p>
+
+            <hr>
+
+            <!-- ADD SKILL -->
+
+            <div class="add-skill-card">
+
+                <h3>➕ Add a Skill</h3>
+
+                <form method="POST">
+
+                    <div class="form-group">
+
+                        <label for="skill_name">
+                            Skill Name
+                        </label>
+
+                        <input type="text"
+                               id="skill_name"
+                               name="skill_name"
+                               placeholder="Example: Python"
+                               required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="skill_level">
+                            Skill Level
+                        </label>
+
+                        <select id="skill_level"
+                                name="skill_level"
+                                required>
+
+                            <option value="">
+                                Select skill level
+                            </option>
+
+                            <option value="Beginner">
+                                Beginner
+                            </option>
+
+                            <option value="Intermediate">
+                                Intermediate
+                            </option>
+
+                            <option value="Advanced">
+                                Advanced
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <button type="submit">
+                        Add Skill
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- MY SKILLS -->
+
+            <div class="my-skills-section">
+
+                <h3>💡 My Skills</h3>
+
+                {% if skills %}
+
+                    <div class="skills-grid">
+
+                        {% for skill in skills %}
+
+                            <div class="skill-card">
+
+                                <div class="skill-info">
+
+                                    <h4>
+                                        {{ skill.skill_name }}
+                                    </h4>
+
+                                    <p>
+                                        Level:
+                                        <strong>
+                                            {{ skill.skill_level }}
+                                        </strong>
+                                    </p>
+
+                                </div>
+
+                                <div class="skill-actions">
+
+                                    <a href="{{ url_for('edit_skill', skill_id=skill.id) }}">
+                                        <button type="button"
+                                                class="skill-button">
+                                            Edit
+                                        </button>
+                                    </a>
+
+                                    <a href="{{ url_for('delete_skill', skill_id=skill.id) }}">
+                                        <button type="button"
+                                                class="skill-button">
+                                            Delete
+                                        </button>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="empty-skills">
+
+                        <p>
+                            You have not added any skills yet.
+                        </p>
+
+                        <p>
+                            Add your first skill using the form above.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="page-actions">
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

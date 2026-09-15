@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Assessment</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Skill Assessment</p>
+    </header>
+
+    <main>
+
+        <section class="assessment-container">
+
+            <div class="assessment-header">
+
+                <h2>📝 Skill Assessment</h2>
+
+                <p>
+                    This assessment is personalized according to
+                    your selected career goal.
+                </p>
+
+                <div class="career-badge">
+                    <strong>Career Goal:</strong>
+                    {{ career_goal }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            {% if questions %}
+
+                <form method="POST">
+
+                    {% for question in questions %}
+
+                        <div class="question-card">
+
+                            <div class="question-number">
+                                Question {{ loop.index }}
+                            </div>
+
+                            <div class="question-skill">
+                                Skill:
+                                <strong>{{ question.skill_name }}</strong>
+                            </div>
+
+                            <h3 class="question-text">
+                                {{ question.question }}
+                            </h3>
+
+                            <label class="option">
+                                <input type="radio"
+                                       name="question_{{ question.id }}"
+                                       value="A"
+                                       required>
+
+                                <span>
+                                    <strong>A.</strong>
+                                    {{ question.option_a }}
+                                </span>
+                            </label>
+
+                            <label class="option">
+                                <input type="radio"
+                                       name="question_{{ question.id }}"
+                                       value="B">
+
+                                <span>
+                                    <strong>B.</strong>
+                                    {{ question.option_b }}
+                                </span>
+                            </label>
+
+                            <label class="option">
+                                <input type="radio"
+                                       name="question_{{ question.id }}"
+                                       value="C">
+
+                                <span>
+                                    <strong>C.</strong>
+                                    {{ question.option_c }}
+                                </span>
+                            </label>
+
+                            <label class="option">
+                                <input type="radio"
+                                       name="question_{{ question.id }}"
+                                       value="D">
+
+                                <span>
+                                    <strong>D.</strong>
+                                    {{ question.option_d }}
+                                </span>
+                            </label>
+
+                        </div>
+
+                    {% endfor %}
+
+                    <div class="assessment-submit">
+
+                        <button type="submit">
+                            Submit Assessment
+                        </button>
+
+                    </div>
+
+                </form>
+
+            {% else %}
+
+                <div class="empty-assessment">
+
+                    <h3>No Relevant Questions Found</h3>
+
+                    <p>
+                        No assessment questions are currently available
+                        for your selected career goal.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+            <div class="page-actions">
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

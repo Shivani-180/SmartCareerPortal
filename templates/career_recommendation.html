@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Recommendations</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Career Recommendations</p>
+    </header>
+
+    <main>
+
+        <section class="career-recommendation-container">
+
+            <div class="career-recommendation-header">
+
+                <h2>🎯 Career Recommendations</h2>
+
+                <p>
+                    Career options are ranked according to how well
+                    your current skills match their requirements.
+                </p>
+
+                <div class="career-badge">
+                    <strong>Your Career Goal:</strong>
+                    {{ student.career_goal }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            {% if recommendations %}
+
+                <h3>Career Matches</h3>
+
+                <div class="career-table-wrapper">
+
+                    <table class="career-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Career</th>
+                                <th>Matched Skills</th>
+                                <th>Total Required Skills</th>
+                                <th>Match</th>
+                                <th>Recommendation</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for item in recommendations %}
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            {{ item.career_name }}
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        {{ item.matched_skills }}
+                                    </td>
+
+                                    <td>
+                                        {{ item.total_skills }}
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            {{ item.match_percentage }}%
+                                        </strong>
+                                    </td>
+
+                                    <td>
+
+                                        {% if item.match_percentage >= 75 %}
+
+                                            <span class="career-status good">
+                                                ✅ Good Match
+                                            </span>
+
+                                        {% elif item.match_percentage >= 40 %}
+
+                                            <span class="career-status partial">
+                                                ⚠️ Partial Match
+                                            </span>
+
+                                        {% else %}
+
+                                            <span class="career-status weak">
+                                                ❌ Needs Improvement
+                                            </span>
+
+                                        {% endif %}
+
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="career-note">
+
+                    <p>
+                        <strong>Good Match:</strong>
+                        Your current skills strongly match the career requirements.
+                    </p>
+
+                    <p>
+                        <strong>Partial Match:</strong>
+                        Some required skills still need improvement.
+                    </p>
+
+                    <p>
+                        <strong>Needs Improvement:</strong>
+                        Several required skills are currently missing or below the required level.
+                    </p>
+
+                </div>
+
+            {% else %}
+
+                <div class="no-careers">
+
+                    <h3>No Career Recommendations Available</h3>
+
+                    <p>
+                        Career recommendations are currently unavailable.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+            <div class="career-actions">
+
+                <a href="{{ url_for('skill_gap') }}">
+                    <button type="button">
+                        View Skill-Gap Analysis
+                    </button>
+                </a>
+
+                <a href="{{ url_for('learning_recommendation') }}">
+                    <button type="button">
+                        Learning Recommendations
+                    </button>
+                </a>
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

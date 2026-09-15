@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Progress Tracking</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Progress Tracking</p>
+    </header>
+
+    <main>
+
+        <section class="progress-container">
+
+            <div class="progress-header">
+
+                <h2>📈 My Progress</h2>
+
+                <p>
+                    Track your current skill development and
+                    assessment performance.
+                </p>
+
+                <div class="career-badge">
+                    <strong>Career Goal:</strong>
+                    {{ student.career_goal }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- PROGRESS CARDS -->
+
+            <h3>Skill Progress</h3>
+
+            <div class="progress-grid">
+
+                <div class="progress-card">
+                    <div class="progress-icon">💡</div>
+                    <h4>Total Skills</h4>
+                    <div class="progress-number">
+                        {{ total_skills }}
+                    </div>
+                    <p>Skills added to your profile</p>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-icon">✅</div>
+                    <h4>Skills Meeting Requirements</h4>
+                    <div class="progress-number">
+                        {{ available_skills }}
+                    </div>
+                    <p>Required level achieved</p>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-icon">⚠️</div>
+                    <h4>Needs Improvement</h4>
+                    <div class="progress-number">
+                        {{ improvement_skills }}
+                    </div>
+                    <p>Skills below required level</p>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-icon">❌</div>
+                    <h4>Missing Skills</h4>
+                    <div class="progress-number">
+                        {{ missing_skills }}
+                    </div>
+                    <p>Required skills not added</p>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- ASSESSMENT PROGRESS -->
+
+            <h3>📝 Assessment Progress</h3>
+
+            {% if assessment_result %}
+
+                <div class="assessment-progress-card">
+
+                    <p>
+                        <strong>Latest Assessment Score</strong>
+                    </p>
+
+                    <div class="assessment-score">
+                        {{ assessment_result.score }}
+                        /
+                        {{ assessment_result.total_questions }}
+                    </div>
+
+                    <p>
+                        Keep practicing to improve your score
+                        and career readiness.
+                    </p>
+
+                </div>
+
+            {% else %}
+
+                <div class="assessment-progress-card">
+
+                    <h4>No Assessment Taken Yet</h4>
+
+                    <p>
+                        Take an assessment to start tracking
+                        your assessment progress.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+            <!-- ACTIONS -->
+
+            <div class="progress-actions">
+
+                <a href="{{ url_for('skills') }}">
+                    <button type="button">
+                        Manage Skills
+                    </button>
+                </a>
+
+                <a href="{{ url_for('assessment') }}">
+                    <button type="button">
+                        Take Assessment
+                    </button>
+                </a>
+
+                <a href="{{ url_for('career_readiness') }}">
+                    <button type="button">
+                        Career Readiness
+                    </button>
+                </a>
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

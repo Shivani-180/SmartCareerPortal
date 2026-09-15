@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Profile</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Edit Your Profile</p>
+    </header>
+
+    <main>
+
+        <section class="form-container">
+
+            <h2>Edit Profile</h2>
+
+            <p class="page-description">
+                Update your personal and career information.
+            </p>
+
+            <form method="POST">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           value="{{ student.name }}"
+                           required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input type="email"
+                           id="email"
+                           value="{{ student.email }}"
+                           disabled>
+
+                    <small>
+                        Email cannot be changed.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="course">
+                        Course
+                    </label>
+
+                    <input type="text"
+                           id="course"
+                           name="course"
+                           value="{{ student.course }}"
+                           required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="career_goal">
+                        Career Goal
+                    </label>
+
+                    <select id="career_goal"
+                            name="career_goal"
+                            required>
+
+                        <option value="Software Developer"
+                            {% if student.career_goal == "Software Developer" %}selected{% endif %}>
+                            Software Developer
+                        </option>
+
+                        <option value="Web Developer"
+                            {% if student.career_goal == "Web Developer" %}selected{% endif %}>
+                            Web Developer
+                        </option>
+
+                        <option value="Data Analyst"
+                            {% if student.career_goal == "Data Analyst" %}selected{% endif %}>
+                            Data Analyst
+                        </option>
+
+                        <option value="Data Scientist"
+                            {% if student.career_goal == "Data Scientist" %}selected{% endif %}>
+                            Data Scientist
+                        </option>
+
+                        <option value="Cyber Security"
+                            {% if student.career_goal == "Cyber Security" %}selected{% endif %}>
+                            Cyber Security
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button type="submit">
+                        Save Changes
+                    </button>
+
+                    <a href="{{ url_for('dashboard') }}">
+                        <button type="button">
+                            Back to Dashboard
+                        </button>
+                    </a>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

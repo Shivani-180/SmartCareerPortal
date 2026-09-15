@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Readiness</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Career Readiness</p>
+    </header>
+
+    <main>
+
+        <section class="readiness-container">
+
+            <div class="readiness-header">
+
+                <h2>🚀 Career Readiness</h2>
+
+                <p>
+                    Your career readiness is based on your skills
+                    and latest assessment performance.
+                </p>
+
+                <div class="career-badge">
+                    <strong>Career Goal:</strong>
+                    {{ student.career_goal }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- SCORE -->
+
+            <div class="readiness-score-card">
+
+                <p class="score-title">
+                    Your Career Readiness Score
+                </p>
+
+                <div class="readiness-score">
+                    {{ readiness_score }}%
+                </div>
+
+                {% if readiness_status == "Highly Ready" %}
+
+                    <div class="readiness-status highly-ready">
+                        🟢 Highly Ready
+                    </div>
+
+                    <p>
+                        You have a strong combination of required
+                        skills and assessment performance.
+                    </p>
+
+                {% elif readiness_status == "Moderately Ready" %}
+
+                    <div class="readiness-status moderately-ready">
+                        🟡 Moderately Ready
+                    </div>
+
+                    <p>
+                        You are progressing well, but some skills
+                        still need improvement.
+                    </p>
+
+                {% else %}
+
+                    <div class="readiness-status needs-improvement">
+                        🔴 Needs Improvement
+                    </div>
+
+                    <p>
+                        Focus on improving your skills and
+                        assessment performance.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+            <!-- DETAILS -->
+
+            <h3>Readiness Details</h3>
+
+            <div class="readiness-grid">
+
+                <div class="readiness-detail-card">
+
+                    <h4>💡 Skills</h4>
+
+                    <div class="detail-number">
+                        {{ matched_skills }}
+                        /
+                        {{ total_required_skills }}
+                    </div>
+
+                    <p>
+                        Required skill levels achieved
+                    </p>
+
+                </div>
+
+
+                <div class="readiness-detail-card">
+
+                    <h4>📝 Assessment</h4>
+
+                    {% if assessment_result %}
+
+                        <div class="detail-number">
+
+                            {{ assessment_result.score }}
+                            /
+                            {{ assessment_result.total_questions }}
+
+                        </div>
+
+                        <p>
+                            Latest assessment score
+                        </p>
+
+                    {% else %}
+
+                        <div class="detail-number">
+                            —
+                        </div>
+
+                        <p>
+                            No assessment taken yet
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <!-- ACTIONS -->
+
+            <div class="readiness-actions">
+
+                <a href="{{ url_for('skill_gap') }}">
+                    <button type="button">
+                        View Skill-Gap
+                    </button>
+                </a>
+
+                <a href="{{ url_for('learning_recommendation') }}">
+                    <button type="button">
+                        Learning Recommendations
+                    </button>
+                </a>
+
+                <a href="{{ url_for('progress_tracking') }}">
+                    <button type="button">
+                        View Progress
+                    </button>
+                </a>
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

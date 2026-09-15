@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Skill</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Edit Skill</p>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+
+            <h2>Edit Skill</h2>
+
+            <p>
+                Update your skill information below.
+            </p>
+
+            <hr>
+
+            <form method="POST">
+
+                <p>
+                    <label>Skill Name</label><br>
+
+                    <input type="text"
+                           name="skill_name"
+                           value="{{ skill.skill_name }}"
+                           required>
+                </p>
+
+                <p>
+                    <label>Skill Level</label><br>
+
+                    <select name="skill_level" required>
+
+                        <option value="Beginner"
+                            {% if skill.skill_level == "Beginner" %}selected{% endif %}>
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate"
+                            {% if skill.skill_level == "Intermediate" %}selected{% endif %}>
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced"
+                            {% if skill.skill_level == "Advanced" %}selected{% endif %}>
+                            Advanced
+                        </option>
+
+                    </select>
+                </p>
+
+                <button type="submit">
+                    Save Changes
+                </button>
+
+            </form>
+
+            <br>
+
+            <a href="{{ url_for('skills') }}">
+                <button type="button">
+                    Back to My Skills
+                </button>
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Student Dashboard</p>
+    </header>
+
+    <main>
+
+        <section class="dashboard-container">
+
+            <h2>Welcome, {{ student.name }}! 🎓</h2>
+
+            <p class="dashboard-subtitle">
+                Manage your skills and plan your career development.
+            </p>
+
+            <!-- PROFILE CARD -->
+
+            <div class="profile-card">
+
+                <h3>👤 My Profile</h3>
+
+                <p>
+                    <strong>Name:</strong>
+                    {{ student.name }}
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    {{ student.email }}
+                </p>
+
+                <p>
+                    <strong>Course:</strong>
+                    {{ student.course }}
+                </p>
+
+                <p>
+                    <strong>Career Goal:</strong>
+                    {{ student.career_goal }}
+                </p>
+
+                <a href="{{ url_for('edit_profile') }}">
+                    <button type="button">
+                        Edit Profile
+                    </button>
+                </a>
+
+            </div>
+
+
+            <!-- CAREER DEVELOPMENT -->
+
+            <h3 class="section-title">
+                Career Development
+            </h3>
+
+            <div class="dashboard-grid">
+
+                <!-- SKILLS -->
+
+                <div class="feature-card">
+
+                    <h3>💡 My Skills</h3>
+
+                    <p>
+                        Add, edit and manage your technical skills.
+                    </p>
+
+                    <a href="{{ url_for('skills') }}">
+                        <button type="button">
+                            Manage Skills
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- ASSESSMENT -->
+
+                <div class="feature-card">
+
+                    <h3>📝 Skill Assessment</h3>
+
+                    <p>
+                        Test your knowledge through MCQ assessments.
+                    </p>
+
+                    <a href="{{ url_for('assessment') }}">
+                        <button type="button">
+                            Take Assessment
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- SKILL GAP -->
+
+                <div class="feature-card">
+
+                    <h3>📊 Skill-Gap Analysis</h3>
+
+                    <p>
+                        Compare your skills with career requirements.
+                    </p>
+
+                    <a href="{{ url_for('skill_gap') }}">
+                        <button type="button">
+                            Analyze Skills
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- CAREER RECOMMENDATION -->
+
+                <div class="feature-card">
+
+                    <h3>🎯 Career Recommendations</h3>
+
+                    <p>
+                        Find careers that match your current skills.
+                    </p>
+
+                    <a href="{{ url_for('career_recommendation') }}">
+                        <button type="button">
+                            View Careers
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- LEARNING -->
+
+                <div class="feature-card">
+
+                    <h3>📚 Learning Recommendations</h3>
+
+                    <p>
+                        Find areas and skills you should improve.
+                    </p>
+
+                    <a href="{{ url_for('learning_recommendation') }}">
+                        <button type="button">
+                            View Learning
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+
+                <div class="feature-card">
+
+                    <h3>📈 Progress Tracking</h3>
+
+                    <p>
+                        View your skill and assessment progress.
+                    </p>
+
+                    <a href="{{ url_for('progress_tracking') }}">
+                        <button type="button">
+                            View Progress
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- CAREER READINESS -->
+
+                <div class="feature-card">
+
+                    <h3>🚀 Career Readiness</h3>
+
+                    <p>
+                        Check your overall career preparation.
+                    </p>
+
+                    <a href="{{ url_for('career_readiness') }}">
+                        <button type="button">
+                            Check Readiness
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGOUT -->
+
+            <div class="dashboard-actions">
+
+                <a href="{{ url_for('logout') }}">
+                    <button type="button">
+                        Logout
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

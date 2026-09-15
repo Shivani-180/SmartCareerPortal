@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Recommendations</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Career Development & Skill Enhancement Portal</h1>
+        <p>Learning Recommendations</p>
+    </header>
+
+    <main>
+
+        <section class="learning-container">
+
+            <div class="learning-header">
+
+                <h2>📚 Learning Recommendations</h2>
+
+                <p>
+                    Improve the skills that are missing or below
+                    the required level for your career goal.
+                </p>
+
+                <div class="career-badge">
+                    <strong>Career Goal:</strong>
+                    {{ student.career_goal }}
+                </div>
+
+            </div>
+
+            <hr>
+
+            {% if recommendations %}
+
+                <h3>Recommended Learning Areas</h3>
+
+                <div class="learning-grid">
+
+                    {% for item in recommendations %}
+
+                        <div class="learning-card">
+
+                            <div class="learning-card-header">
+
+                                <h4>
+                                    {{ item.skill_name }}
+                                </h4>
+
+                                <span class="current-level">
+                                    Current:
+                                    {{ item.current_level }}
+                                </span>
+
+                            </div>
+
+                            <div class="learning-content">
+
+                                <p>
+                                    <strong>What to focus on:</strong>
+                                </p>
+
+                                <p>
+                                    📖 {{ item.recommendation }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="learning-success">
+
+                    <h3>🎉 Great Job!</h3>
+
+                    <p>
+                        You currently meet all the required skill
+                        levels for your selected career goal.
+                    </p>
+
+                    <p>
+                        Continue practicing and developing your skills.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+            <div class="learning-actions">
+
+                <a href="{{ url_for('skill_gap') }}">
+                    <button type="button">
+                        View Skill-Gap Analysis
+                    </button>
+                </a>
+
+                <a href="{{ url_for('career_recommendation') }}">
+                    <button type="button">
+                        Career Recommendations
+                    </button>
+                </a>
+
+                <a href="{{ url_for('dashboard') }}">
+                    <button type="button">
+                        Back to Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
