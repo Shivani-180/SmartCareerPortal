@@ -72,7 +72,7 @@ Steps:
    
    python app.py
 
-8. Open the local address displayed in the terminal, usually "http://127.0.0.1:5000", if that is the address configured by the application.
+8. Open your web browser and visit "http://127.0.0.1:5000" to access the application, if this is the address configured in "app.py".
 
 Future Enhancements
 
